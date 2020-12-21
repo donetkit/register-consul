@@ -1,4 +1,4 @@
-module register-consul
+module github.com/donetkit/register-consul
 
 go 1.15
 
