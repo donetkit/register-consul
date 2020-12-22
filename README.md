@@ -1,1 +1,1 @@
-## Go-Consul
+## Go-Consuls

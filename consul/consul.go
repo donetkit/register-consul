@@ -2,13 +2,13 @@ package consul
 
 import (
 	"fmt"
+	"github.com/donetkit/register-consul/config"
 	"github.com/google/uuid"
 	"github.com/hashicorp/consul/api"
 	"github.com/sirupsen/logrus"
 	"log"
 	"net"
 	"net/http"
-	"register-consul/config"
 	"strconv"
 	"strings"
 	"time"

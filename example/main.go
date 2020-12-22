@@ -1,8 +1,8 @@
 package main
 
 import (
-	"register-consul/config"
-	"register-consul/consul"
+	"github.com/donetkit/register-consul/config"
+	"github.com/donetkit/register-consul/consul"
 	"time"
 )
 
