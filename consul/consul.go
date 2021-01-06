@@ -62,9 +62,9 @@ func registerConsulServer() {
 	registration.Tags = []string{config.ConsulConfig.Tags}   //tag，可以为空
 	registration.Address = getLocalIP()  //服务 IP
 	url := fmt.Sprintf("http://%s:%d/%s/%s", registration.Address, config.ConsulConfig.CheckPort, "consulhealth",NodeId)
-	if config.ConsulConfig.HealthUrl != "" {
-		url = config.ConsulConfig.HealthUrl
-	}
+	//if config.ConsulConfig.HealthUrl != "" {
+	//	url = config.ConsulConfig.HealthUrl
+	//}
 	registration.Check = &api.AgentServiceCheck{ // 健康检查
 		HTTP:                      url,
 		Timeout:                   fmt.Sprintf("%d%s",config.ConsulConfig.Timeout,"s") ,
