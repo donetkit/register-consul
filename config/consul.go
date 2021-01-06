@@ -23,6 +23,7 @@ type Consul struct {
 	Timeout int          // 超时时间
 	IntervalTime int;    // 健康检查间隔
 	DeregisterTime int  // 服务注销时间，相当于过期时间
+	HealthUrl string // 健康检查url
 }
 
 //载入配置文件
@@ -55,6 +56,7 @@ func initConsul(cfg *viper.Viper) *Consul {
 		Timeout :	cfg.GetInt("time_out"),
 		IntervalTime :	cfg.GetInt("interval_time"),
 		DeregisterTime :	cfg.GetInt("deregister_time"),
+		HealthUrl: cfg.GetString("health_url"),
 	}
 	return  config
 }

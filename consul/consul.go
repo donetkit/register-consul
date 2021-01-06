@@ -62,6 +62,9 @@ func registerConsulServer() {
 	registration.Tags = []string{config.ConsulConfig.Tags}   //tag，可以为空
 	registration.Address = getLocalIP()  //服务 IP
 	url := fmt.Sprintf("http://%s:%d/%s/%s", registration.Address, config.ConsulConfig.CheckPort, "consulhealth",NodeId)
+	if config.ConsulConfig.HealthUrl != "" {
+		url = config.ConsulConfig.HealthUrl
+	}
 	registration.Check = &api.AgentServiceCheck{ // 健康检查
 		HTTP:                      url,
 		Timeout:                   fmt.Sprintf("%d%s",config.ConsulConfig.Timeout,"s") ,
@@ -74,8 +77,12 @@ func registerConsulServer() {
 	if err != nil {
 		log.Fatal("register server error : ", err)
 	}
-	http.HandleFunc(fmt.Sprintf("/%s/%s","consulhealth",NodeId), consulCheck)
-	http.ListenAndServe(fmt.Sprintf(":%d", config.ConsulConfig.CheckPort), nil)
+
+	if config.ConsulConfig.HealthUrl == "" {
+		http.HandleFunc(fmt.Sprintf("/%s/%s","consulhealth",NodeId), consulCheck)
+		http.ListenAndServe(fmt.Sprintf(":%d", config.ConsulConfig.CheckPort), nil)
+	}
+
 }
 
 // consul 服务端会自己发送请求，来进行健康检查

@@ -9,3 +9,4 @@ config:
     time_out: 3
     interval_time: 15
     deregister_time: 3
+    health_url: ""
