@@ -1,4 +1,4 @@
-package consul
+package client
 
 import (
 	"math/rand"
