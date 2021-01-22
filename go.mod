@@ -2,7 +2,4 @@ module github.com/donetkit/register-consul
 
 go 1.15
 
-require (
-	github.com/google/uuid v1.1.2 // indirect
-	github.com/spf13/viper v1.7.1 // indirect
-)
+require github.com/hashicorp/consul/api v1.8.1
